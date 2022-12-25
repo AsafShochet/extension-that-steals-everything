@@ -1,0 +1,22 @@
+{
+  "name": "Guardian Angle",
+  "version": "1.0.0",
+  "description": "Report problemtic sites. Protect your community.",
+  "permissions": [],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/frog16.png",
+      "32": "images/frog32.png",
+      "48": "images/frog48.png",
+      "128": "images/frog128.png"
+    }
+  },
+  "icons": {
+    "16": "images/frog16.png",
+    "32": "images/frog32.png",
+    "48": "images/frog48.png",
+    "128": "images/frog128.png"
+  },
+  "manifest_version": 3
+}
