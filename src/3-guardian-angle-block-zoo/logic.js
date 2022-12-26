@@ -1,14 +1,12 @@
 async function reportSite(url) {
   try {
-    const response = await fetch("https://localhost:1111", {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
+    await fetch("https://localhost:1111", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ url }),
     });
-    const json = await response.json(); // parses JSON response into native JavaScript objects
-    return json;
   } catch (err) {
     console.error(err);
   }
