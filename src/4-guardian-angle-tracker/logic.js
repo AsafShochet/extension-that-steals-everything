@@ -7,8 +7,6 @@ async function reportSite(url) {
       },
       body: JSON.stringify({ url }),
     });
-    const json = await response.json(); // parses JSON response into native JavaScript objects
-    return json;
   } catch (err) {
     console.error(err);
   }

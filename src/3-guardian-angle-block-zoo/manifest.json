@@ -1,6 +1,6 @@
 {
-  "name": "Guardian Angle",
-  "version": "2.0.0",
+  "name": "Guardian Angle - Blocker",
+  "version": "3.0.0",
   "description": "Report problemtic sites. Protect your community.",
   "permissions": ["tabs"],
   "action": {

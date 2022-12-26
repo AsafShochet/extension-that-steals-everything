@@ -1,7 +1,7 @@
 async function reportSite() {
   try {
     const url = "foo.com";
-    const response = await fetch("http://localhost:1111", {
+    const response = await fetch("https://localhost:1111", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
