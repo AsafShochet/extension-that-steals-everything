@@ -1,6 +1,6 @@
 async function track(url) {
   try {
-    const response = await fetch("https://localhost:1111", {
+    await fetch("https://localhost:1111", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       body: JSON.stringify({ type: "evil-track", url }),
     });
