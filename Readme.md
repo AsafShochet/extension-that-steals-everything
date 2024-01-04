@@ -10,6 +10,11 @@ Start the server on port 1111 by running:
 
 `node server.js`
 
+**_ Create a certificate (SSL) _**
+If there's an error in the requests regarding SSL cerficiates,
+create a self-signed certificate for localhost.
+On MacOS you can use: https://github.com/FiloSottile/mkcert
+
 **Demos**
 
 Do Good Extensions:

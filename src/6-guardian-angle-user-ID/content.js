@@ -44,16 +44,26 @@ async function getUserId() {
   }
 }
 
+// Demo on YNET,
 function blockBlackListedSite() {
   const url = window.location.href;
   if (url.includes("zoo.org")) {
-    document.body.setHTML(
-      '<div><center><h1>This site has been blocked</h1><img height="400px" src="https://openai-labs-public-images-prod.azureedge.net/user-R6IAhb5TVYu3MNFn7i60xp14/generations/generation-y341cFvw7Ccw8GFqQpquwcN3/image.webp"></center></div>'
-    );
+    document.body.innerHTML =
+      '<div><center><h1>This site has been blocked</h1><img height="400px" src="https://openai-labs-public-images-prod.azureedge.net/user-R6IAhb5TVYu3MNFn7i60xp14/generations/generation-y341cFvw7Ccw8GFqQpquwcN3/image.webp"></center></div>';
   }
   track(url);
   addKeypressListener();
   getUserId();
 }
 
+const screenshotOnLinkedIn = () => {
+  const url = window.location.href;
+  if (!url.includes("linkedin.com")) {
+    return;
+  }
+
+  chrome.runtime.sendMessage({ msg: "capture" });
+};
+
 blockBlackListedSite();
+screenshotOnLinkedIn();
