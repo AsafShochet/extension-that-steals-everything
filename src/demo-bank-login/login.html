@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BTHN Bank - Login</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        background-image: url("./background.jpeg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 20px;
+      }
+
+      .container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 3px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #333;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      .footer {
+        margin-top: 50px;
+        text-align: center;
+        background-color: #ffffffab;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .footer a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: #555;
+      }
+    </style>
+    <script>
+      // Setting some "sensitive" data in localstorage to be later fetched be the attacker
+      localStorage.setItem("something-interesting", "admin");
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="column">
+        <div class="logo">
+          <img src="./logo.jpg" alt="Bank Name" width="200" height="200" />
+          <h1>Account Login</h1>
+        </div>
+        <form action="#" method="post">
+          <input type="text" name="username" placeholder="Username" required />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+          <input type="submit" value="Login" />
+        </form>
+      </div>
+    </div>
+    <div class="footer">
+      <a href="./login.html">Login</a>
+      <a href="./branches.html">Locations</a>
+      <a href="#">Careers</a>
+      <a href="https://www.evinced.com">Accessibility</a>
+      <a href="#">Terms and Conditions</a>
+    </div>
+  </body>
+</html>
