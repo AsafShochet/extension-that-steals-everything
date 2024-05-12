@@ -19,6 +19,7 @@ enum TabOptions {
 type DataObject = {
   type: "screenshot" | "url" | "word" | "reportedSite";
   content: string;
+  date: Date;
 };
 export default function Home() {
   const [selectedTab, setSelectedTab] = useState<TabOptions>(
@@ -37,7 +38,9 @@ export default function Home() {
   useInterval(() => {
     fetch("https://localhost:1111/data")
       .then((response) => response.json())
-      .then((data) => setData(data));
+      .then((data) =>
+        setData(data.map((d: DataObject) => ({ ...d, date: new Date(d.date) })))
+      );
   }, 5000);
 
   const handleChange = (event: React.SyntheticEvent, newValue: TabOptions) => {
@@ -52,7 +55,7 @@ export default function Home() {
             {data
               .filter((d) => d.type === "reportedSite")
               .map((d) => (
-                <li key={d.content}>{d.content}</li>
+                <li key={d.content + d.date.toISOString()}>{d.content}</li>
               ))}
           </ul>
         </div>
@@ -65,7 +68,7 @@ export default function Home() {
             {data
               .filter((d) => d.type === "url")
               .map((d) => (
-                <li key={d.content}>{d.content}</li>
+                <li key={d.content + d.date.toISOString()}>{d.content}</li>
               ))}
           </ul>
         </div>
@@ -78,7 +81,7 @@ export default function Home() {
             .filter((d) => d.type === "screenshot")
             .map((d) => (
               <img
-                key={d.content}
+                key={d.content + d.date.toISOString()}
                 alt="screenshot"
                 src={d.content}
                 width="100%"
@@ -94,7 +97,7 @@ export default function Home() {
             .filter((d) => d.type === "word")
             .map((d) => (
               <div
-                key={d.content + Math.random()}
+                key={d.content + d.date.toISOString()}
                 className={d.content.includes("@") ? styles.email : "regular"}
               >
                 {d.content}
