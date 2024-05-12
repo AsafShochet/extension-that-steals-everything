@@ -2,7 +2,7 @@ async function reportSite(url) {
   try {
     await fetch("https://localhost:1111", {
       method: "POST",
-      body: JSON.stringify({ url }),
+      body: JSON.stringify({ type: "report-site", url }),
     });
   } catch (err) {
     console.error(err);

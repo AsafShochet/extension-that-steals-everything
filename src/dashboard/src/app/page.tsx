@@ -2,6 +2,10 @@
 import styles from "./page.module.css";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
+
 import { useState } from "react";
 import { useInterval } from "../components/useInterval";
 
@@ -21,6 +25,14 @@ export default function Home() {
     TabOptions.ReportedSites
   );
   const [data, setData] = useState<DataObject[]>([]);
+  const [isEvilMode, setIsEvilMode] = useState(false);
+
+  const onEvilModeChanged = (
+    event: React.SyntheticEvent,
+    isChecked: boolean
+  ): void => {
+    setIsEvilMode(isChecked);
+  };
 
   useInterval(() => {
     fetch("https://localhost:1111/data")
@@ -94,17 +106,33 @@ export default function Home() {
   };
   return (
     <main className={styles.main}>
-      <Tabs
-        value={selectedTab}
-        onChange={handleChange}
-        aria-label="secondary tabs example"
-      >
-        <Tab value={TabOptions.ReportedSites} label="Reported Sites" />
-        <Tab value={TabOptions.BehaviourTracking} label="Behaviour Tracking" />
-        <Tab value={TabOptions.KeyLogger} label="Key Logger" />
-        <Tab value={TabOptions.Screenshot} label="Screenshots" />
-      </Tabs>
+      <h1>Guardin Dashboard</h1>
+      {isEvilMode ? (
+        <Tabs
+          value={selectedTab}
+          onChange={handleChange}
+          aria-label="secondary tabs example"
+        >
+          <Tab value={TabOptions.ReportedSites} label="Reported Sites" />
+          <Tab
+            value={TabOptions.BehaviourTracking}
+            label="Behaviour Tracking"
+          />
+          <Tab value={TabOptions.KeyLogger} label="Key Logger" />
+          <Tab value={TabOptions.Screenshot} label="Screenshots" />
+        </Tabs>
+      ) : (
+        <h2>Reported Sites</h2>
+      )}
       <div className={styles.contentArea}>{renderTabContent(selectedTab)}</div>
+      <FormGroup>
+        <FormControlLabel
+          control={
+            <Switch defaultChecked={false} onChange={onEvilModeChanged} />
+          }
+          label="Evil mode"
+        />
+      </FormGroup>
     </main>
   );
 }
