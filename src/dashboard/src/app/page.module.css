@@ -1,14 +1,46 @@
+.header {
+  height: 80px;
+  font-size: 14px;
+  font-family: Lato, sans-serif;
+  padding: 20px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerP {
+  display: flex;
+  gap: 20px;
+}
+
+.headerImage {
+  width: 25px;
+  height: 25px;
+}
+
 .main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
+  padding: 20px;
   height: 100vh;
+  background-color: #f8f9fa;
 }
 
 .email {
   color: blue;
+}
+
+.staticH2 {
+  color: #1976d2;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  text-transform: uppercase;
+  width: 100%;
+  padding: 12px 16px;
 }
 
 .contentArea {
@@ -16,10 +48,19 @@
   height: 100%;
   width: 100%;
   padding: 10px;
-  font-family: monospace;
+  margin-top: 10px;
+  font-family: Outfit, sans-serif;
   font-size: 16px;
   line-height: 30px;
+  overflow-y: scroll;
 }
+
+.reportedSitesList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .description {
   display: inherit;
   justify-content: inherit;
@@ -28,7 +69,6 @@
   max-width: var(--max-width);
   width: 100%;
   z-index: 2;
-  font-family: var(--font-mono);
 }
 
 .description a {
@@ -49,7 +89,6 @@
 
 .code {
   font-weight: 700;
-  font-family: var(--font-mono);
 }
 
 .grid {

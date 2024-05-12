@@ -48,7 +48,7 @@ export default function Home() {
     if (tab === TabOptions.ReportedSites) {
       return (
         <div>
-          <ul>
+          <ul className={styles.reportedSitesList}>
             {data
               .filter((d) => d.type === "reportedSite")
               .map((d) => (
@@ -61,7 +61,7 @@ export default function Home() {
     if (tab === TabOptions.BehaviourTracking) {
       return (
         <div>
-          <ul>
+          <ul className={styles.reportedSitesList}>
             {data
               .filter((d) => d.type === "url")
               .map((d) => (
@@ -105,34 +105,48 @@ export default function Home() {
     }
   };
   return (
-    <main className={styles.main}>
-      <h1>Guardin Dashboard</h1>
-      {isEvilMode ? (
-        <Tabs
-          value={selectedTab}
-          onChange={handleChange}
-          aria-label="secondary tabs example"
-        >
-          <Tab value={TabOptions.ReportedSites} label="Reported Sites" />
-          <Tab
-            value={TabOptions.BehaviourTracking}
-            label="Behaviour Tracking"
-          />
-          <Tab value={TabOptions.KeyLogger} label="Key Logger" />
-          <Tab value={TabOptions.Screenshot} label="Screenshots" />
-        </Tabs>
-      ) : (
-        <h2>Reported Sites</h2>
-      )}
-      <div className={styles.contentArea}>{renderTabContent(selectedTab)}</div>
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <Switch defaultChecked={false} onChange={onEvilModeChanged} />
-          }
-          label="Evil mode"
+    <>
+      <header className={styles.header}>
+        <div className={styles.headerP}>
+          <img src="/logo.svg" className={styles.headerImage} alt="logo" />
+          <h2>Guardian Angel Dashboard</h2>
+        </div>
+        <img
+          src="/UserIcon.svg"
+          className={styles.headerImage}
+          alt="user menu"
         />
-      </FormGroup>
-    </main>
+      </header>
+      <main className={styles.main}>
+        {isEvilMode ? (
+          <Tabs
+            value={selectedTab}
+            onChange={handleChange}
+            aria-label="secondary tabs example"
+          >
+            <Tab value={TabOptions.ReportedSites} label="Reported Sites" />
+            <Tab
+              value={TabOptions.BehaviourTracking}
+              label="Behaviour Tracking"
+            />
+            <Tab value={TabOptions.KeyLogger} label="Key Logger" />
+            <Tab value={TabOptions.Screenshot} label="Screenshots" />
+          </Tabs>
+        ) : (
+          <h2 className={styles.staticH2}>Reported Sites</h2>
+        )}
+        <div className={styles.contentArea}>
+          {renderTabContent(selectedTab)}
+        </div>
+        <FormGroup>
+          <FormControlLabel
+            control={
+              <Switch defaultChecked={false} onChange={onEvilModeChanged} />
+            }
+            label="Evil mode"
+          />
+        </FormGroup>
+      </main>
+    </>
   );
 }
