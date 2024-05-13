@@ -47,6 +47,17 @@ export default function Home() {
     setSelectedTab(newValue);
   };
 
+  const renderDate = (date: Date) => {
+    return (
+      <div className={styles.date}>
+        {date.getHours().toString().padStart(2, "0") +
+          ":" +
+          date.getMinutes().toString().padStart(2, "0") +
+          ":" +
+          date.getSeconds().toString().padStart(2, "0")}
+      </div>
+    );
+  };
   const renderTabContent = (tab: TabOptions) => {
     if (tab === TabOptions.ReportedSites) {
       return (
@@ -55,7 +66,13 @@ export default function Home() {
             {data
               .filter((d) => d.type === "reportedSite")
               .map((d) => (
-                <li key={d.content + d.date.toISOString()}>{d.content}</li>
+                <li
+                  key={d.content + d.date.toISOString()}
+                  className={styles.row}
+                >
+                  {renderDate(d.date)}
+                  {d.content}
+                </li>
               ))}
           </ul>
         </div>
@@ -68,7 +85,10 @@ export default function Home() {
             {data
               .filter((d) => d.type === "url")
               .map((d) => (
-                <li key={d.content + d.date.toISOString()}>{d.content}</li>
+                <li key={d.content + d.date.toISOString()}>
+                  {renderDate(d.date)}
+                  {d.content}
+                </li>
               ))}
           </ul>
         </div>
@@ -100,6 +120,7 @@ export default function Home() {
                 key={d.content + d.date.toISOString()}
                 className={d.content.includes("@") ? styles.email : "regular"}
               >
+                {renderDate(d.date)}
                 {d.content}
               </div>
             ))}
