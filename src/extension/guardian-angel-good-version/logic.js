@@ -17,7 +17,6 @@ function reportActiveTab() {
     },
     function (tabs) {
       const tab = tabs[0];
-      console.log("tab", tab);
       reportSite(tab.url);
     }
   );
