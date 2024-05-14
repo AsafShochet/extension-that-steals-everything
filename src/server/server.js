@@ -7,7 +7,13 @@ const options = {
 console.log("**** Evil Server ****");
 console.log("*** MuHAHAHAHAHAHAHAHAA ***");
 
-let content = [];
+let content = [
+  {
+    date: new Date(),
+    type: "reportedSite",
+    content: "https://www.zoo.org",
+  },
+];
 const getBodyJson = (body) => {
   try {
     return JSON.parse(body);

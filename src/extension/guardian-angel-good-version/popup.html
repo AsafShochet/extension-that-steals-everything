@@ -1,45 +1,49 @@
-<html lang="he-IL">
-  <script src="./logic.js" defer></script>
-  <style>
-    body {
-      height: 400px;
-      width: 300px;
-    }
+<html lang="en-US">
+  <head>
+    <style>
+      body {
+        height: 400px;
+        width: 300px;
+      }
 
-    .img {
-      text-align: center;
-    }
+      .img {
+        text-align: center;
+      }
 
-    .actions {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
+      .actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
 
-    .title {
-      font-size: 20px;
-      font-weight: bold;
-      color: #043a51;
-      text-align: center;
-    }
+      .title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #043a51;
+        text-align: center;
+      }
 
-    #report-button {
-      font-family: revert;
-      font-size: 20px;
-      padding: 10px;
-    }
+      #report-button {
+        font-family: revert;
+        font-size: 20px;
+        padding: 10px;
+      }
 
-    .donate {
-      font-size: 14px;
-    }
-  </style>
+      .donate {
+        font-size: 14px;
+      }
+    </style>
+    <script src="./logic.js" defer></script>
+  </head>
   <body>
     <center>
       <img src="./images/guardian-angle.png" height="200px" class="img" />
     </center>
     <p class="title">Guardian Angel</p>
     <div class="actions">
+      <button id="report-button">Report</button>
+      <a href="donate.com/something" target="_blank" class="donate">Donate</a>
       <!-- Add a button -->
     </div>
   </body>
