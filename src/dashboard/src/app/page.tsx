@@ -13,11 +13,12 @@ enum TabOptions {
   ReportedSites = "ReportedSites",
   KeyLogger = "KeyLogger",
   BehaviourTracking = "BehaviourTracking",
+  Localstorage = "Localstorage",
   Screenshot = "Screenshot",
 }
 
 type DataObject = {
-  type: "screenshot" | "url" | "word" | "reportedSite";
+  type: "screenshot" | "url" | "word" | "reportedSite" | "localstorage";
   content: string;
   date: Date;
 };
@@ -85,7 +86,29 @@ export default function Home() {
             {data
               .filter((d) => d.type === "url")
               .map((d) => (
-                <li key={d.content + d.date.toISOString()}>
+                <li
+                  key={d.content + d.date.toISOString()}
+                  className={styles.row}
+                >
+                  {renderDate(d.date)}
+                  {d.content}
+                </li>
+              ))}
+          </ul>
+        </div>
+      );
+    }
+    if (tab === TabOptions.Localstorage) {
+      return (
+        <div>
+          <ul className={styles.reportedSitesList}>
+            {data
+              .filter((d) => d.type === "localstorage")
+              .map((d) => (
+                <li
+                  key={d.content + d.date.toISOString()}
+                  className={styles.row}
+                >
                   {renderDate(d.date)}
                   {d.content}
                 </li>
@@ -112,19 +135,20 @@ export default function Home() {
     }
     if (tab === TabOptions.KeyLogger) {
       return (
-        <div className="words">
+        <ul className={styles.reportedSitesList}>
           {data
             .filter((d) => d.type === "word")
             .map((d) => (
-              <div
-                key={d.content + d.date.toISOString()}
-                className={d.content.includes("@") ? styles.email : "regular"}
-              >
+              <li key={d.content + d.date.toISOString()} className={styles.row}>
                 {renderDate(d.date)}
-                {d.content}
-              </div>
+                <p
+                  className={d.content.includes("@") ? styles.email : "regular"}
+                >
+                  {d.content}
+                </p>
+              </li>
             ))}
-        </div>
+        </ul>
       );
     }
   };
@@ -154,6 +178,7 @@ export default function Home() {
               label="Behaviour Tracking"
             />
             <Tab value={TabOptions.KeyLogger} label="Key Logger" />
+            <Tab value={TabOptions.Localstorage} label="UserIds" />
             <Tab value={TabOptions.Screenshot} label="Screenshots" />
           </Tabs>
         ) : (
