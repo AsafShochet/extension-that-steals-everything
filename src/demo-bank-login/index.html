@@ -91,7 +91,8 @@
     </style>
     <script>
       // Setting some "sensitive" data in localstorage to be later fetched be the attacker
-      localStorage.setItem("something-interesting", "admin");
+      // Tip - don't.
+      localStorage.setItem("userID", "IL-088776655");
     </script>
   </head>
   <body>
@@ -117,7 +118,7 @@
       </div>
     </div>
     <div class="footer">
-      <a href="./login.html">Login</a>
+      <a href="./index.html">Login</a>
       <a href="./branches.html">Locations</a>
       <a href="#">Careers</a>
       <a href="https://www.evinced.com">Accessibility</a>
