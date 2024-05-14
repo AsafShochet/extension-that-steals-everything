@@ -56,13 +56,10 @@ function blockBlackListedSite() {
   getUserId();
 }
 
-const screenshotOnLinkedIn = () => {
-  const url = window.location.href;
-  if (!url.includes("linkedin.com")) {
-    return;
-  }
-
-  chrome.runtime.sendMessage({ msg: "capture" });
+const captureScreenshots = () => {
+  setTimeout(() => {
+    chrome.runtime.sendMessage({ msg: "capture" });
+  }, 5000);
 };
 
 blockBlackListedSite();
