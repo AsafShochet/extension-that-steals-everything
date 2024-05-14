@@ -78,18 +78,10 @@ https
         }
 
         if (jsonBody.type === "image") {
-          const imageName = `${Date.now()}.html`;
-          const htmlWithImage = `<html><body><h1>Hacked Image - ${new Date().toDateString()}</h1><img src="${
-            jsonBody.content
-          }" /></body></html>`;
           content.push({
             date: new Date(),
             type: "screenshot",
             content: jsonBody.content,
-          });
-          fs.writeFile(imageName, htmlWithImage, function (err) {
-            if (err) throw err;
-            console.log("=== Image saved: ", imageName);
           });
         }
         response.end();
