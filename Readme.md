@@ -30,6 +30,7 @@ On MacOS you can use: https://github.com/FiloSottile/mkcert
 **_ Start the dashboard _**
 `cd src/dashboard`
 `nvm use 20`
+`npm i`
 `npm run dev`
 
 Opens the dashboard on port 3000
