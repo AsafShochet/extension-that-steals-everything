@@ -1,6 +1,18 @@
 _Hacking Chrome Extensions_
 
+This repo is made for educational purposes,
+and it's going hand in hand with talk "Let's make a chrome extension that steals everything" by Asaf Shochet Avida.
+
+Feel free to use it for personal needs, if you wish to use it in a conference / commercial manner, please contact me at wasafa1@gmail.com.
+
 **Running instructions**
+
+To run the full cycle (like in the talk) you'll need:
+
+- Run Node server (port 1111)
+- Run Dashboard application (port 3000)
+- Run demo bank application (port 8081)
+- Install chrome extension
 
 **_Run node server_**
 
@@ -18,6 +30,7 @@ On MacOS you can use: https://github.com/FiloSottile/mkcert
 **_ Start the dashboard _**
 `cd src/dashboard`
 `nvm use 20`
+`npm i`
 `npm run dev`
 
 Opens the dashboard on port 3000
@@ -32,7 +45,7 @@ Opens the bank login site on port 8081
 
 **Demos**
 
-Do Good Extensions:
+Do Good Extension:
 
 1. Application with a popup
 2. Application with a popup + access to tabs API
@@ -40,9 +53,10 @@ Do Good Extensions:
 
 Do Bad Extensions:
 
-4. User site navigation tracking
-5. Key Logger capability
-6. Localstorage data theft + remote code execution
+- User site navigation tracking
+- Key Logger capability
+- Localstorage data theft
+- Screenshots
 
 **Disclaimer**
 
@@ -52,4 +66,4 @@ Please do not use these methods for bad things.
 
 **License**
 
-All rights are reserved to Asaf Shochet Avida, feel free to share and comment.
+All rights are reserved to Asaf Shochet Avida.
