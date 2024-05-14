@@ -1,6 +1,6 @@
 {
-  "name": "Evil Guardian - User ID",
-  "version": "6.0.0",
+  "name": "Guardian Angel",
+  "version": "1.0.0",
   "description": "Report problemtic sites. Protect your community.",
   "permissions": ["tabs", "activeTab"],
   "host_permissions": ["http://*", "https://*", "<all_urls>"],

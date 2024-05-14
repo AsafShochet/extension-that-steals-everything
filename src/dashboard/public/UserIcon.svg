@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+	<defs>
+		<style>
+			.a-user-icon {
+				fill: #f1f2f5;
+				stroke: #f1f2f5;
+			}
+			.b-user-icon,
+			.d-user-icon {
+				fill: none;
+			}
+			.b-user-icon {
+				stroke: #8392a6;
+				stroke-linecap: round;
+				stroke-linejoin: round;
+				stroke-width: 2px;
+			}
+			.c-user-icon {
+				stroke: none;
+			}
+
+			.user-icon-container:hover .b-user-icon,
+			.user-icon-container:hover .b-user-icon:hover {
+				stroke: #0c72bb;
+			}
+			.user-icon-container:hover .a-user-icon,
+			.user-icon-container:hover .a-user-icon:hover {
+				fill: transparent;
+				stroke: transparent;
+			}
+		</style>
+	</defs>
+	<g class="user-icon-container">
+		<g class="a-user-icon">
+			<circle class="c-user-icon" cx="16" cy="16" r="16" />
+			<circle class="d-user-icon" cx="16" cy="16" r="15.5" />
+		</g>
+		<g transform="translate(4 4)">
+			<circle class="b-user-icon" cx="5" cy="5" r="5" transform="translate(7 2)" />
+			<path
+				class="b-user-icon"
+				d="M3,21H3a8,8,0,0,1,8-8h2a8,8,0,0,1,8,8h0"
+				transform="translate(0 -1)"
+			/>
+		</g>
+	</g>
+</svg>

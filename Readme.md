@@ -15,6 +15,21 @@ If there's an error in the requests regarding SSL cerficiates,
 create a self-signed certificate for localhost.
 On MacOS you can use: https://github.com/FiloSottile/mkcert
 
+**_ Start the dashboard _**
+`cd src/dashboard`
+`nvm use 20`
+`npm run dev`
+
+Opens the dashboard on port 3000
+
+**_ Start the demo banking site _**
+`cd src/demo-bank-login`
+`npx http-server -p 8081`
+
+go to url `http://localhost:8081/login.html`
+
+Opens the bank login site on port 8081
+
 **Demos**
 
 Do Good Extensions:
