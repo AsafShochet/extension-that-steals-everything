@@ -18,5 +18,13 @@
     "48": "images/frog48.png",
     "128": "images/frog128.png"
   },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
   "manifest_version": 3
 }

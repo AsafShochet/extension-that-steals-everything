@@ -25,3 +25,5 @@ function reportActiveTab() {
 document
   .getElementById("report-button")
   .addEventListener("click", reportActiveTab);
+
+init();
