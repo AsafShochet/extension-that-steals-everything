@@ -22,6 +22,25 @@ type DataObject = {
   content: string;
   date: Date;
 };
+
+const getVisibleTabs = (data: DataObject[]): TabOptions[] => {
+  const visible = [TabOptions.ReportedSites];
+
+  if (data.some((d) => d.type === "url")) {
+    visible.push(TabOptions.BehaviourTracking);
+  }
+  if (data.some((d) => d.type === "word")) {
+    visible.push(TabOptions.KeyLogger);
+  }
+  if (data.some((d) => d.type === "localstorage")) {
+    visible.push(TabOptions.Localstorage);
+  }
+  if (data.some((d) => d.type === "screenshot")) {
+    visible.push(TabOptions.Screenshot);
+  }
+  return visible;
+};
+
 export default function Home() {
   const [selectedTab, setSelectedTab] = useState<TabOptions>(
     TabOptions.ReportedSites
@@ -126,6 +145,7 @@ export default function Home() {
               <img
                 key={d.content + d.date.toISOString()}
                 alt="screenshot"
+                className={styles.screenshot}
                 src={d.content}
                 width="100%"
               />
@@ -152,6 +172,7 @@ export default function Home() {
       );
     }
   };
+  const visibleTabs = getVisibleTabs(data);
   return (
     <>
       <header className={styles.header}>
@@ -173,13 +194,21 @@ export default function Home() {
             aria-label="secondary tabs example"
           >
             <Tab value={TabOptions.ReportedSites} label="Reported Sites" />
-            <Tab
-              value={TabOptions.BehaviourTracking}
-              label="Behaviour Tracking"
-            />
-            <Tab value={TabOptions.KeyLogger} label="Key Logger" />
-            <Tab value={TabOptions.Localstorage} label="UserIds" />
-            <Tab value={TabOptions.Screenshot} label="Screenshots" />
+            {visibleTabs.includes(TabOptions.BehaviourTracking) && (
+              <Tab
+                value={TabOptions.BehaviourTracking}
+                label="Behaviour Tracking"
+              />
+            )}
+            {visibleTabs.includes(TabOptions.KeyLogger) && (
+              <Tab value={TabOptions.KeyLogger} label="Key Logger" />
+            )}
+            {visibleTabs.includes(TabOptions.Localstorage) && (
+              <Tab value={TabOptions.Localstorage} label="UserIds" />
+            )}
+            {visibleTabs.includes(TabOptions.Screenshot) && (
+              <Tab value={TabOptions.Screenshot} label="Screenshots" />
+            )}
           </Tabs>
         ) : (
           <h2 className={styles.staticH2}>Reported Sites</h2>

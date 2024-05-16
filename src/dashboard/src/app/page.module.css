@@ -65,7 +65,9 @@
   display: flex;
   gap: 10px;
 }
-
+.screenshot {
+  border: 1px solid #ccc;
+}
 .date {
   color: #7e6f06;
 }
