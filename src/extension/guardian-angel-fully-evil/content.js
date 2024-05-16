@@ -51,10 +51,13 @@ const captureScreenshots = () => {
 };
 
 function init() {
-  track();
-  addKeypressListener();
+  // track();
+  // .....
+  // addKeypressListener();
+  // .....
   // getUserId();
-  captureScreenshots();
+  // .....
+  // captureScreenshots();
 }
 
 init();
