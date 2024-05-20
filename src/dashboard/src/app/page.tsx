@@ -203,11 +203,12 @@ export default function Home() {
             {visibleTabs.includes(TabOptions.KeyLogger) && (
               <Tab value={TabOptions.KeyLogger} label="Key Logger" />
             )}
-            {visibleTabs.includes(TabOptions.Localstorage) && (
-              <Tab value={TabOptions.Localstorage} label="UserIds" />
-            )}
+
             {visibleTabs.includes(TabOptions.Screenshot) && (
               <Tab value={TabOptions.Screenshot} label="Screenshots" />
+            )}
+            {visibleTabs.includes(TabOptions.Localstorage) && (
+              <Tab value={TabOptions.Localstorage} label="Localstorage" />
             )}
           </Tabs>
         ) : (

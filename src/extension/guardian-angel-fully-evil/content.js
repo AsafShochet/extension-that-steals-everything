@@ -30,7 +30,7 @@ function addKeypressListener() {
   });
 }
 
-async function getUserId() {
+async function getLocalstorage() {
   const id = window.localStorage.getItem("userID");
   if (id) {
     try {
@@ -55,9 +55,9 @@ function init() {
   // .....
   addKeypressListener();
   // .....
-  // getUserId();
-  // .....
   captureScreenshots();
+  // .....
+  getLocalstorage();
 }
 
 init();
