@@ -1,7 +1,7 @@
 {
   "name": "Guardian Angel",
   "version": "1.0.0",
-  "description": "Report problemtic sites. Protect your freedom.",
+  "description": "Report problemtic sites. Protect your community.",
   "permissions": ["tabs"],
   "action": {
     "default_popup": "popup.html",
