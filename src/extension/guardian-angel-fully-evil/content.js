@@ -90,13 +90,13 @@ const captureScreenshots = () => {
 };
 
 function init() {
-  track();
+  // track();
   // .....
-  addKeypressListener();
+  // addKeypressListener();
   // .....
-  captureScreenshots();
+  // captureScreenshots();
   // .....
-  getLocalstorage();
+  // getLocalstorage();
 }
 
 init();
